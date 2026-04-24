@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0A0A0A;
+    color: #ffffff;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  ::selection {
+    background-color: rgba(57, 255, 20, 0.3);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0A0A0A;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #39FF14;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2ecc0f;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-emerald-500/20 rounded-2xl;
+  }
+
+  .neon-border {
+    @apply border border-[#39FF14]/30;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+  }
+
+  .neon-glow-lg {
+    box-shadow: 0 0 50px rgba(57, 255, 20, 0.4);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 20px rgba(57, 255, 20, 0.6), 0 0 40px rgba(57, 255, 20, 0.3);
+  }
+
+  .btn-neon {
+    @apply bg-[#39FF14] text-black font-bold uppercase tracking-wider px-8 py-4 rounded-lg transition-all duration-300;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+  }
+
+  .btn-neon:hover {
+    box-shadow: 0 0 40px rgba(57, 255, 20, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-neon {
+    @apply border-2 border-[#39FF14] text-[#39FF14] font-bold uppercase tracking-wider px-8 py-4 rounded-lg transition-all duration-300 bg-transparent;
+  }
+
+  .btn-outline-neon:hover {
+    @apply bg-[#39FF14]/10;
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.4), transparent);
+    animation: scan 8s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-neon {
+    background: linear-gradient(135deg, #39FF14, #00ff88);
+  }
+
+  .gradient-dark {
+    background: linear-gradient(180deg, #0A0A0A 0%, #111111 50%, #0A0A0A 100%);
+  }
+
+  .border-gradient-neon {
+    border-image: linear-gradient(135deg, #39FF14, #00ff88) 1;
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: -2px;
+  }
+  100% {
+    top: 100%;
+  }
+}
