@@ -8,13 +8,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        neon: "#39FF14",
+        crimson: "#DC2626",
+        "crimson-light": "#EF4444",
+        electric: "#3B82F6",
         dark: {
-          900: "#0A0A0A",
-          800: "#111111",
-          700: "#1A1A1A",
-          600: "#222222",
-          500: "#2A2A2A",
+          900: "#09090B",
+          800: "#0F0F12",
+          700: "#18181B",
+          600: "#27272A",
+          500: "#3F3F46",
         },
       },
       fontFamily: {
@@ -22,7 +24,7 @@ const config: Config = {
         body: ["var(--font-inter)", "sans-serif"],
       },
       animation: {
-        "pulse-neon": "pulseNeon 2s ease-in-out infinite",
+        "pulse-crimson": "pulseCrimson 2s ease-in-out infinite",
         "fade-in-up": "fadeInUp 0.6s ease-out forwards",
         "fade-in-left": "fadeInLeft 0.6s ease-out forwards",
         "fade-in-right": "fadeInRight 0.6s ease-out forwards",
@@ -31,9 +33,9 @@ const config: Config = {
         "scan": "scan 8s linear infinite",
       },
       keyframes: {
-        pulseNeon: {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(57, 255, 20, 0.4)" },
-          "50%": { boxShadow: "0 0 40px rgba(57, 255, 20, 0.8)" },
+        pulseCrimson: {
+          "0%, 100%": { boxShadow: "0 0 20px rgba(220, 38, 38, 0.4)" },
+          "50%": { boxShadow: "0 0 40px rgba(220, 38, 38, 0.8)" },
         },
         fadeInUp: {
           "0%": { opacity: "0", transform: "translateY(40px)" },
@@ -52,8 +54,8 @@ const config: Config = {
           "100%": { opacity: "1", transform: "scale(1)" },
         },
         glow: {
-          "0%": { textShadow: "0 0 10px rgba(57, 255, 20, 0.5)" },
-          "100%": { textShadow: "0 0 30px rgba(57, 255, 20, 1), 0 0 60px rgba(57, 255, 20, 0.5)" },
+          "0%": { textShadow: "0 0 10px rgba(220, 38, 38, 0.5)" },
+          "100%": { textShadow: "0 0 30px rgba(220, 38, 38, 1), 0 0 60px rgba(220, 38, 38, 0.5)" },
         },
         scan: {
           "0%": { transform: "translateY(-100%)" },
@@ -61,9 +63,10 @@ const config: Config = {
         },
       },
       boxShadow: {
-        "neon": "0 0 20px rgba(57, 255, 20, 0.3)",
-        "neon-lg": "0 0 40px rgba(57, 255, 20, 0.4)",
-        "neon-xl": "0 0 60px rgba(57, 255, 20, 0.5)",
+        "crimson": "0 0 20px rgba(220, 38, 38, 0.3)",
+        "crimson-lg": "0 0 40px rgba(220, 38, 38, 0.4)",
+        "crimson-xl": "0 0 60px rgba(220, 38, 38, 0.5)",
+        "electric": "0 0 20px rgba(59, 130, 246, 0.3)",
       },
     },
   },

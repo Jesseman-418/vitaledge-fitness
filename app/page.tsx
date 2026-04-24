@@ -55,8 +55,9 @@ function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Grid background */}
       <div className="absolute inset-0 grid-bg" />
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(57,255,20,0.05)_0%,transparent_70%)]" />
+      {/* Dual radial gradient overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(220,38,38,0.08)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(59,130,246,0.06)_0%,transparent_50%)]" />
       {/* Scan line effect */}
       <div className="absolute inset-0 scan-line pointer-events-none" />
 
@@ -66,9 +67,9 @@ function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#39FF14]/30 bg-[#39FF14]/5 mb-8">
-            <Zap className="w-4 h-4 text-[#39FF14]" />
-            <span className="text-sm font-medium text-[#39FF14] uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-600/30 bg-red-600/5 mb-8">
+            <Zap className="w-4 h-4 text-red-500" />
+            <span className="text-sm font-medium text-red-400 uppercase tracking-widest">
               AI-Powered Coaching
             </span>
           </div>
@@ -83,7 +84,7 @@ function Hero() {
           <span className="block">Transform Your</span>
           <span className="block">
             Body.{" "}
-            <span className="text-[#39FF14] neon-text">Elevate</span>
+            <span className="text-red-500 crimson-text">Elevate</span>
           </span>
           <span className="block">Your Life.</span>
         </motion.h1>
@@ -104,11 +105,11 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
-          <button className="btn-neon text-lg flex items-center gap-2 group">
+          <button className="btn-primary text-lg flex items-center gap-2 group">
             Start Your Journey
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-          <button className="btn-outline-neon text-lg">See Results</button>
+          <button className="btn-outline text-lg">See Results</button>
         </motion.div>
 
         {/* Stats bar */}
@@ -119,12 +120,12 @@ function Hero() {
           className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16"
         >
           {[
-            { value: "10K+", label: "Transformations" },
-            { value: "98%", label: "Satisfaction" },
-            { value: "50+", label: "Programs" },
+            { value: "10K+", label: "Transformations", color: "text-red-500" },
+            { value: "98%", label: "Satisfaction", color: "text-blue-400" },
+            { value: "50+", label: "Programs", color: "text-red-500" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="font-heading text-3xl md:text-4xl font-bold text-[#39FF14]">
+              <div className={`font-heading text-3xl md:text-4xl font-bold ${stat.color}`}>
                 {stat.value}
               </div>
               <div className="text-sm text-gray-500 uppercase tracking-widest mt-1">
@@ -148,7 +149,8 @@ const programs = [
     duration: "12 Weeks",
     price: "$49",
     period: "/mo",
-    color: "from-orange-500/20 to-red-500/20",
+    color: "from-red-600/20 to-orange-500/20",
+    accent: "text-red-500",
     features: [
       "Customized fat-loss meal plans",
       "5x/week progressive training",
@@ -165,7 +167,8 @@ const programs = [
     price: "$69",
     period: "/mo",
     popular: true,
-    color: "from-[#39FF14]/20 to-emerald-500/20",
+    color: "from-red-600/20 to-red-500/20",
+    accent: "text-red-500",
     features: [
       "Hypertrophy-focused programming",
       "Caloric surplus meal planning",
@@ -181,7 +184,8 @@ const programs = [
     duration: "8 Weeks",
     price: "$59",
     period: "/mo",
-    color: "from-blue-500/20 to-purple-500/20",
+    color: "from-blue-500/20 to-blue-400/20",
+    accent: "text-blue-400",
     features: [
       "Sport-specific programming",
       "Speed & agility training",
@@ -198,7 +202,7 @@ function ProgramCards() {
       <div className="max-w-6xl mx-auto">
         <AnimatedSection className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4">
-            Choose Your <span className="text-[#39FF14]">Path</span>
+            Choose Your <span className="text-red-500">Path</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
             Three battle-tested programs. One goal: your best self.
@@ -209,10 +213,10 @@ function ProgramCards() {
           {programs.map((program, i) => (
             <AnimatedSection key={program.name} delay={i * 0.15}>
               <div
-                className={`relative group h-full rounded-2xl bg-dark-700 border border-white/10 p-8 transition-all duration-500 hover:border-[#39FF14]/50 hover:shadow-[0_0_30px_rgba(57,255,20,0.15)]`}
+                className="relative group h-full rounded-2xl bg-dark-700 border border-white/10 p-8 transition-all duration-500 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)]"
               >
                 {program.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#39FF14] text-black text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full">
                     Most Popular
                   </div>
                 )}
@@ -223,7 +227,7 @@ function ProgramCards() {
                 />
 
                 <div className="relative z-10">
-                  <program.icon className="w-10 h-10 text-[#39FF14] mb-4" />
+                  <program.icon className={`w-10 h-10 ${program.accent} mb-4`} />
                   <h3 className="font-heading text-3xl font-bold uppercase mb-1">
                     {program.name}
                   </h3>
@@ -244,13 +248,13 @@ function ProgramCards() {
                   <ul className="space-y-3 mb-8">
                     {program.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-[#39FF14] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                         <span className="text-gray-300 text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <button className="w-full btn-neon text-sm">
+                  <button className="w-full btn-primary text-sm">
                     Get Started
                     <ChevronRight className="w-4 h-4 inline ml-1" />
                   </button>
@@ -268,36 +272,11 @@ function ProgramCards() {
 
 const results = [
   { stat: "-32 lbs", desc: "in 12 weeks", name: "Jake M.", program: "SHRED" },
-  {
-    stat: "+15 lbs",
-    desc: "muscle in 16 weeks",
-    name: "Sarah K.",
-    program: "BUILD",
-  },
-  {
-    stat: "Sub 5-min",
-    desc: "mile achieved",
-    name: "Chris T.",
-    program: "PERFORM",
-  },
-  {
-    stat: "-45 lbs",
-    desc: "total transformation",
-    name: "Maria L.",
-    program: "SHRED",
-  },
-  {
-    stat: "6-Pack",
-    desc: "in 90 days",
-    name: "David R.",
-    program: "BUILD",
-  },
-  {
-    stat: "1st Pull-up",
-    desc: "at age 45",
-    name: "Linda P.",
-    program: "PERFORM",
-  },
+  { stat: "+15 lbs", desc: "muscle in 16 weeks", name: "Sarah K.", program: "BUILD" },
+  { stat: "Sub 5-min", desc: "mile achieved", name: "Chris T.", program: "PERFORM" },
+  { stat: "-45 lbs", desc: "total transformation", name: "Maria L.", program: "SHRED" },
+  { stat: "6-Pack", desc: "in 90 days", name: "David R.", program: "BUILD" },
+  { stat: "1st Pull-up", desc: "at age 45", name: "Linda P.", program: "PERFORM" },
 ];
 
 function Results() {
@@ -308,7 +287,7 @@ function Results() {
         <AnimatedSection className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4">
             The Proof Is In{" "}
-            <span className="text-[#39FF14]">The Results</span>
+            <span className="text-red-500">The Results</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
             Real people. Real transformations. No filters.
@@ -318,12 +297,12 @@ function Results() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {results.map((result, i) => (
             <AnimatedSection key={result.name} delay={i * 0.1}>
-              <div className="glass-card p-8 text-center group hover:border-[#39FF14]/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(57,255,20,0.15)]">
-                <div className="font-heading text-4xl md:text-5xl font-bold text-[#39FF14] mb-2 neon-text">
+              <div className="glass-card p-8 text-center group hover:border-red-500/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)]">
+                <div className={`font-heading text-4xl md:text-5xl font-bold mb-2 crimson-text ${result.program === "PERFORM" ? "text-blue-400" : "text-red-500"}`}>
                   {result.stat}
                 </div>
                 <p className="text-gray-400 mb-4">{result.desc}</p>
-                <div className="w-12 h-[2px] bg-[#39FF14]/30 mx-auto mb-4" />
+                <div className="w-12 h-[2px] bg-red-500/30 mx-auto mb-4" />
                 <p className="font-heading font-bold text-white uppercase text-sm">
                   {result.name}
                 </p>
@@ -378,7 +357,7 @@ function HowItWorks() {
       <div className="max-w-4xl mx-auto">
         <AnimatedSection className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4">
-            How It <span className="text-[#39FF14]">Works</span>
+            How It <span className="text-red-500">Works</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
             Four steps. Zero guesswork. Maximum results.
@@ -386,21 +365,21 @@ function HowItWorks() {
         </AnimatedSection>
 
         <div className="relative">
-          {/* Neon line */}
-          <div className="absolute left-8 md:left-12 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#39FF14] via-[#39FF14]/50 to-transparent" />
+          {/* Crimson line */}
+          <div className="absolute left-8 md:left-12 top-0 bottom-0 w-[2px] bg-gradient-to-b from-red-600 via-red-600/50 to-blue-500/30" />
 
           <div className="space-y-12">
             {steps.map((step, i) => (
               <AnimatedSection key={step.number} delay={i * 0.15}>
                 <div className="flex gap-6 md:gap-10 items-start relative">
                   {/* Node */}
-                  <div className="relative z-10 shrink-0 w-16 md:w-24 h-16 md:h-24 rounded-2xl bg-dark-700 border border-[#39FF14]/30 flex items-center justify-center shadow-neon">
-                    <step.icon className="w-7 h-7 md:w-10 md:h-10 text-[#39FF14]" />
+                  <div className="relative z-10 shrink-0 w-16 md:w-24 h-16 md:h-24 rounded-2xl bg-dark-700 border border-red-600/30 flex items-center justify-center shadow-crimson">
+                    <step.icon className={`w-7 h-7 md:w-10 md:h-10 ${i < 2 ? "text-red-500" : "text-blue-400"}`} />
                   </div>
 
                   <div className="pt-2 md:pt-4">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-[#39FF14] font-heading font-bold text-sm tracking-widest">
+                      <span className="text-red-500 font-heading font-bold text-sm tracking-widest">
                         STEP {step.number}
                       </span>
                     </div>
@@ -429,35 +408,47 @@ const features = [
     description:
       "Machine learning algorithms analyze your progress, recovery, and performance data to continuously optimize your training program in real-time.",
     icon: Brain,
+    accent: "text-red-500",
+    bg: "bg-red-600/10",
+    border: "border-red-600/20",
   },
   {
     title: "Nutrition Tracking",
     description:
       "Macro-optimized meal plans tailored to your goals, preferences, and dietary restrictions. Scan, log, and optimize every meal effortlessly.",
     icon: Apple,
+    accent: "text-blue-400",
+    bg: "bg-blue-500/10",
+    border: "border-blue-500/20",
   },
   {
     title: "Live Coaching",
     description:
       "Weekly 1-on-1 video calls with certified coaches who review your progress, answer questions, and keep you accountable every step of the way.",
     icon: Video,
+    accent: "text-red-500",
+    bg: "bg-red-600/10",
+    border: "border-red-600/20",
   },
   {
     title: "Community",
     description:
       "Join 10,000+ members in our private community. Share wins, find workout partners, and stay motivated with people who get it.",
     icon: Users,
+    accent: "text-blue-400",
+    bg: "bg-blue-500/10",
+    border: "border-blue-500/20",
   },
 ];
 
 function CoachingFeatures() {
   return (
     <section className="py-24 px-6 bg-dark-800 relative">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(57,255,20,0.03)_0%,transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(220,38,38,0.04)_0%,transparent_60%)]" />
       <div className="relative z-10 max-w-6xl mx-auto">
         <AnimatedSection className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4">
-            Everything You <span className="text-[#39FF14]">Need</span>
+            Everything You <span className="text-red-500">Need</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
             Science-backed tools and human coaching. The perfect combination.
@@ -467,9 +458,9 @@ function CoachingFeatures() {
         <div className="grid md:grid-cols-2 gap-6">
           {features.map((feature, i) => (
             <AnimatedSection key={feature.title} delay={i * 0.1}>
-              <div className="glass-card p-8 group hover:border-[#39FF14]/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(57,255,20,0.15)] h-full">
-                <div className="w-14 h-14 rounded-xl bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center mb-6 group-hover:shadow-neon transition-shadow duration-500">
-                  <feature.icon className="w-7 h-7 text-[#39FF14]" />
+              <div className="glass-card p-8 group hover:border-red-500/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)] h-full">
+                <div className={`w-14 h-14 rounded-xl ${feature.bg} border ${feature.border} flex items-center justify-center mb-6 group-hover:shadow-crimson transition-shadow duration-500`}>
+                  <feature.icon className={`w-7 h-7 ${feature.accent}`} />
                 </div>
                 <h3 className="font-heading text-xl font-bold uppercase mb-3">
                   {feature.title}
@@ -518,7 +509,7 @@ function Testimonials() {
       <div className="max-w-6xl mx-auto">
         <AnimatedSection className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4">
-            What They <span className="text-[#39FF14]">Say</span>
+            What They <span className="text-blue-400">Say</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
             Don&apos;t take our word for it. Hear from the people who lived it.
@@ -528,12 +519,12 @@ function Testimonials() {
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <AnimatedSection key={t.name} delay={i * 0.15}>
-              <div className="glass-card p-8 h-full flex flex-col group hover:border-[#39FF14]/40 transition-all duration-500">
+              <div className="glass-card p-8 h-full flex flex-col group hover:border-red-500/40 transition-all duration-500">
                 <div className="flex gap-1 mb-6">
                   {Array.from({ length: t.stars }).map((_, si) => (
                     <Star
                       key={si}
-                      className="w-5 h-5 text-[#39FF14] fill-[#39FF14]"
+                      className="w-5 h-5 text-red-500 fill-red-500"
                     />
                   ))}
                 </div>
@@ -544,7 +535,7 @@ function Testimonials() {
                   <p className="font-heading font-bold text-white uppercase text-sm">
                     {t.name}
                   </p>
-                  <p className="text-xs text-[#39FF14] uppercase tracking-widest mt-1">
+                  <p className="text-xs text-red-400 uppercase tracking-widest mt-1">
                     {t.role}
                   </p>
                 </div>
@@ -562,14 +553,14 @@ function Testimonials() {
 function CTASection() {
   return (
     <section className="py-24 px-6 relative">
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#39FF14] to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(57,255,20,0.05)_0%,transparent_60%)]" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.05)_0%,transparent_60%)]" />
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <AnimatedSection>
           <h2 className="font-heading text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
             Your Transformation{" "}
-            <span className="text-[#39FF14] neon-text">Starts Now</span>
+            <span className="text-red-500 crimson-text">Starts Now</span>
           </h2>
           <p className="text-gray-400 text-lg mb-10">
             Join 10,000+ people who chose to change. Your future self will thank
@@ -580,9 +571,9 @@ function CTASection() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 bg-dark-700 border border-white/10 rounded-lg px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#39FF14]/50 focus:shadow-[0_0_20px_rgba(57,255,20,0.1)] transition-all duration-300"
+              className="flex-1 bg-dark-700 border border-white/10 rounded-lg px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-red-500/50 focus:shadow-[0_0_20px_rgba(220,38,38,0.1)] transition-all duration-300"
             />
-            <button className="btn-neon whitespace-nowrap animate-pulse-neon">
+            <button className="btn-primary whitespace-nowrap animate-pulse-crimson">
               Get Started Free
             </button>
           </div>
@@ -606,7 +597,7 @@ function Footer() {
           {/* Logo & tagline */}
           <div className="md:col-span-1">
             <div className="font-heading text-2xl font-bold uppercase mb-3">
-              <span className="text-[#39FF14]">Vital</span>Edge
+              <span className="text-red-500">Vital</span>Edge
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
               Built for results, powered by science.
@@ -623,7 +614,7 @@ function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-[#39FF14] transition-colors text-sm"
+                    className="text-gray-500 hover:text-red-400 transition-colors text-sm"
                   >
                     {link}
                   </a>
@@ -641,7 +632,7 @@ function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-[#39FF14] transition-colors text-sm"
+                    className="text-gray-500 hover:text-red-400 transition-colors text-sm"
                   >
                     {link}
                   </a>
@@ -660,7 +651,7 @@ function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-gray-500 hover:text-[#39FF14] transition-colors text-sm"
+                      className="text-gray-500 hover:text-red-400 transition-colors text-sm"
                     >
                       {link}
                     </a>
@@ -682,7 +673,7 @@ function Footer() {
               <a
                 key={i}
                 href="#"
-                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 hover:text-[#39FF14] hover:border-[#39FF14]/30 transition-all duration-300"
+                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 hover:text-red-400 hover:border-red-500/30 transition-all duration-300"
               >
                 <Icon className="w-5 h-5" />
               </a>
